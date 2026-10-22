@@ -1,2 +1,2 @@
 # din_sat
-a website for local fermers
+a website for local fermers from moldova
