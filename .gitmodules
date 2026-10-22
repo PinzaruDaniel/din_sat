@@ -1,0 +1,8 @@
+[submodule "src/din_sat_api"]
+	path = src/din_sat_api
+	url = https://PinzaruDaniel@github.com/PinzaruDaniel/din_sat_api.git
+	branch = main
+[submodule "src/din_sat_front"]
+	path = src/din_sat_front
+	url = https://PinzaruDaniel@github.com/PinzaruDaniel/din_sat_front.git
+	branch = main
