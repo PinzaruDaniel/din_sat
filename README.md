@@ -19,8 +19,12 @@ din_sat/
     │   ├── README.md
     │   ├── src/
     │   │   ├── app/
-    │   │   ├── modules/
+    │   │   ├── domain/features/
+    │   │   ├── application/features/
     │   │   ├── infrastructure/
+    │   │   │   └── features/
+    │   │   ├── presentation/
+    │   │   │   └── features/
     │   │   └── shared/
     │   ├── docs/
     │   └── tests/
@@ -29,7 +33,12 @@ din_sat/
         ├── public/
         ├── src/
         │   ├── app/
-        │   ├── features/
+        │   ├── domain/features/
+        │   ├── application/features/
+        │   ├── infrastructure/
+        │   │   └── features/
+        │   ├── presentation/
+        │   │   └── features/
         │   ├── shared/
         │   └── assets/
         ├── docs/
@@ -39,17 +48,19 @@ din_sat/
 | Componentă | Tehnologii și organizare | Documentație |
 | --- | --- | --- |
 | Backend | Node.js și JavaScript; Express propus; monolit modular inspirat de Clean Architecture | [README API](src/din_sat_api/README.md) |
-| Frontend | React și JavaScript; Vite propus; funcționalități organizate după principiile Clean Architecture | [README frontend](src/din_sat_front/README.md) |
+| Frontend | React și JavaScript; Vite propus; Clean Architecture cu funcționalități grupate în fiecare strat | [README frontend](src/din_sat_front/README.md) |
 | Baza de date | Tehnologia și schema se stabilesc separat; accesul este izolat în infrastructura backend-ului | [Persistență și API](src/din_sat_api/README.md#baza-de-date-și-contractul-api) |
 
 ## Arhitectură
 
-Fiecare modul backend și fiecare funcționalitate frontend are patru straturi:
+În fiecare aplicație, cele patru straturi apar o singură dată, direct în `src/`. Fiecare strat conține un director `features/`, în care funcționalitățile sunt grupate după nume:
 
 - `domain/`: modele și reguli independente de framework.
 - `application/`: cazuri de utilizare și contractele dependențelor externe.
 - `infrastructure/`: implementări pentru persistență, HTTP sau furnizori externi.
 - `presentation/`: controllere și rute HTTP în backend; componente, pagini și hook-uri React în frontend.
+
+De exemplu, autentificarea este împărțită între `src/domain/features/auth/`, `src/application/features/auth/`, `src/infrastructure/features/auth/` și `src/presentation/features/auth/`. Aceeași convenție se aplică tuturor funcționalităților din ambele aplicații. Fiecare director de funcționalitate va conține fișierele specifice stratului respectiv.
 
 Directorul `app/` al fiecărei aplicații configurează și conectează aceste straturi. Domeniul rămâne independent, iar infrastructura implementează contractele cerute de aplicație.
 
