@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@neon/config": "^1.10.2",
+    "@neon/env": "^1.6.10"
+  },
+  "name": "din-sat",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "npm --prefix src/din_sat_front run build",
+    "start": "node scripts/start-app.mjs",
+    "dev": "node scripts/start-app.mjs --dev",
+    "api": "node scripts/run-api.mjs start",
+    "db:migrate": "node scripts/run-api.mjs db:migrate",
+    "db:check": "node scripts/run-api.mjs db:check",
+    "neon:deploy": "neon deploy",
+    "test:env": "node --test scripts/tests/*.test.mjs",
+    "test:neon:api": "node scripts/neon-smoke.mjs",
+    "test:neon:restart": "node scripts/neon-smoke.mjs --resume",
+    "test:neon:browser": "node scripts/run-neon-browser.mjs"
+  }
+}
